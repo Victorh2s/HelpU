@@ -12,6 +12,7 @@ import usersroutes from './src/routes/usersroutes';
 import tokenroutes from './src/routes/tokenroutes';
 import contatoroutes from './src/routes/contatoroutes';
 import fotoroutes from './src/routes/fotoroutes';
+import anotacoes from './src/routes/anotacoesroutes';
 
 class App {
   constructor() {
@@ -34,6 +35,7 @@ class App {
     this.app.use('/tokens/', tokenroutes);
     this.app.use('/contatos/', contatoroutes);
     this.app.use('/foto/', fotoroutes);
+    this.app.use('/notas/', anotacoes);
   }
 }
 
