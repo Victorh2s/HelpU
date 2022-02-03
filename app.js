@@ -10,6 +10,8 @@ import delay from 'express-delay';
 import HomeRoutes from './src/routes/homeroutes';
 import usersroutes from './src/routes/usersroutes';
 import tokenroutes from './src/routes/tokenroutes';
+import contatoroutes from './src/routes/contatoroutes';
+import fotoroutes from './src/routes/fotoroutes';
 
 class App {
   constructor() {
@@ -29,7 +31,9 @@ class App {
     this.app.use(cors());
     this.app.use('/', HomeRoutes);
     this.app.use('/users/', usersroutes);
-    this.app.use('/tokens', tokenroutes);
+    this.app.use('/tokens/', tokenroutes);
+    this.app.use('/contatos/', contatoroutes);
+    this.app.use('/foto/', fotoroutes);
   }
 }
 

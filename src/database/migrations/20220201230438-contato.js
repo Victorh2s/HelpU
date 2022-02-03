@@ -1,6 +1,6 @@
 module.exports = {
   async up(queryInterface, Sequelize) {
-    return queryInterface.createTable('users', {
+    return queryInterface.createTable('contatos', {
       id: {
         type: Sequelize.INTEGER,
         allowNull: false,
@@ -14,15 +14,18 @@ module.exports = {
       email: {
         type: Sequelize.STRING,
         allowNull: false,
-        unique: true,
       },
-      sobrenome: {
-        type: Sequelize.STRING,
+      telefone: {
+        type: Sequelize.INTEGER,
         allowNull: false,
       },
-      password_hash: {
-        type: Sequelize.STRING,
-        allowNull: false,
+      user_id: {
+        type: Sequelize.INTEGER,
+        allowNull: true,
+        references: {
+          model: 'users',
+          key: 'id',
+        },
       },
       created_at: {
         type: Sequelize.DATE,
@@ -36,6 +39,6 @@ module.exports = {
   },
 
   async down(queryInterface) {
-    return queryInterface.dropTable('users');
+    return queryInterface.dropTable('contatos');
   },
 };

@@ -1,4 +1,5 @@
 import User from '../models/Users';
+import Contato from '../models/Contato';
 
 class UserController {
   async store(req, res) {
@@ -17,17 +18,29 @@ class UserController {
     }
   }
 
-  // Index
   async index(req, res) {
+    const user = await User.findAll({
+      attributes: ['id', 'nome', 'email', 'sobrenome'],
+      order: [['id', 'DESC'], [Contato, 'id', 'DESC']],
+      include: {
+        model: Contato,
+
+      },
+    });
+    return res.json(user);
+  }
+
+  async show(req, res) {
     try {
-      const users = await User.findAll({ attributes: ['id', 'nome', 'sobrenome', 'email'] });
-      return res.json(users);
+      const user = await User.findByPk(req.params.id);
+
+      const { id, nome, email } = user;
+      return res.json({ id, nome, email });
     } catch (e) {
       return res.json(null);
     }
   }
 
-  // Update
   async update(req, res) {
     try {
       const user = await User.findByPk(req.params.id);
