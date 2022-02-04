@@ -72,5 +72,6 @@ export default class User extends Model {
       models.Contato,
       { foreignKey: 'user_id' },
     );
+    this.hasMany(models.Anotacoes, { foreignKey: 'use_id' });
   }
 }

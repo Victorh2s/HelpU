@@ -1,5 +1,7 @@
 import User from '../models/Users';
 import Contato from '../models/Contato';
+import Foto from '../models/Foto';
+import Anotacoes from '../models/Anotacoes';
 
 class UserController {
   async store(req, res) {
@@ -22,10 +24,10 @@ class UserController {
     const user = await User.findAll({
       attributes: ['id', 'nome', 'email', 'sobrenome'],
       order: [['id', 'DESC'], [Contato, 'id', 'DESC']],
-      include: {
+      include: [{
         model: Contato,
-
       },
+      ],
     });
     return res.json(user);
   }
@@ -73,7 +75,7 @@ class UserController {
       }
 
       await user.destroy();
-      return res.json(null);
+      return res.json('Usuário apagado com sucesso');
     } catch (e) {
       return res.status(400).json({
         errors: e.errors.map((err) => err.message),

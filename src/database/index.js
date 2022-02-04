@@ -4,8 +4,9 @@ import Users from '../models/Users';
 import Contato from '../models/Contato';
 import Foto from '../models/Foto';
 import Anotacoes from '../models/Anotacoes';
+import Galeria from '../models/Galeria';
 
-const models = [Users, Contato, Foto, Anotacoes];
+const models = [Users, Contato, Foto, Anotacoes, Galeria];
 
 const connection = new Sequelize(databaseConfig);
 

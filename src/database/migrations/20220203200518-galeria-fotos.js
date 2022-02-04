@@ -1,25 +1,25 @@
 module.exports = {
   async up(queryInterface, Sequelize) {
-    return queryInterface.createTable('contatos', {
+    return queryInterface.createTable('galeria', {
       id: {
         type: Sequelize.INTEGER,
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
       },
-      nome: {
+      title: {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      email: {
+      originalname: {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      telefone: {
-        type: Sequelize.INTEGER,
+      filename: {
+        type: Sequelize.STRING,
         allowNull: false,
       },
-      user_id: {
+      userr_id: {
         type: Sequelize.INTEGER,
         allowNull: true,
         references: {
@@ -41,6 +41,6 @@ module.exports = {
   },
 
   async down(queryInterface) {
-    return queryInterface.dropTable('contatos');
+    return queryInterface.dropTable('galeria');
   },
 };
