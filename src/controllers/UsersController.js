@@ -1,7 +1,7 @@
 import User from '../models/Users';
 import Contato from '../models/Contato';
-import Foto from '../models/Foto';
 import Anotacoes from '../models/Anotacoes';
+import Galeria from '../models/Galeria';
 
 class UserController {
   async store(req, res) {
@@ -23,9 +23,13 @@ class UserController {
   async index(req, res) {
     const user = await User.findAll({
       attributes: ['id', 'nome', 'email', 'sobrenome'],
-      order: [['id', 'DESC'], [Contato, 'id', 'DESC']],
+      order: [['id', 'DESC'], [Contato, 'id', 'DESC'], [Anotacoes, 'id', 'DESC'], [Galeria, 'id', 'DESC']],
       include: [{
         model: Contato,
+      }, {
+        model: Anotacoes,
+      }, {
+        model: Galeria,
       },
       ],
     });

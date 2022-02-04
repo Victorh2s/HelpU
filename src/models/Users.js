@@ -73,5 +73,6 @@ export default class User extends Model {
       { foreignKey: 'user_id' },
     );
     this.hasMany(models.Anotacoes, { foreignKey: 'use_id' });
+    this.hasMany(models.Galeria, { foreignKey: 'userr_id' });
   }
 }
