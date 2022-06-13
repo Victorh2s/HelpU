@@ -19,3 +19,33 @@ export default {
     },
   }),
 };
+
+
+// const maxSize = 10 * 1024 * 1024;
+// export const multerConfig = {
+//   dest: resolve(__dirname, '..', '..', 'uploads'),
+//   storage: diskStorage({
+//     destination: (request, file, callback) => {
+//       callback(null, resolve(__dirname, '..', '..', 'uploads'));
+//     },
+//     filename: (request, file, callback) => {
+//       randomBytes(16, (error, hash) => {
+//         if (error) {
+//           callback(error, file.filename);
+//         }
+//         const filename = `${hash.toString('hex')}.png`;
+//         callback(null, filename);
+//       });
+//     },
+//   }),
+//   limits: { fileSize: maxSize },
+//   fileFilter: (request, file, callback) => {
+//     const formats = ['image/jpeg', 'image/jpg', 'image/png'];
+
+//     if (formats.includes(file.mimetype)) {
+//       callback(null, true);
+//     } else {
+//       callback(new Error('Format not accepted'));
+//     }
+//   },
+// } as Options;

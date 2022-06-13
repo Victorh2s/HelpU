@@ -45,8 +45,8 @@ export default class User extends Model {
         defaultValue: '',
         validate: {
           len: {
-            args: [6, 50],
-            msg: 'A senha precisa ter entre 6 e 50 caracteres',
+            args: [6, 25],
+            msg: 'A senha precisa ter entre 6 e 25 caracteres',
           },
         },
       },
@@ -63,16 +63,27 @@ export default class User extends Model {
     return this;
   }
 
-  passwordIsValid(password) {
-    return bcryptjs.compare(password, this.password_hash);
-  }
+    passwordIsValid(password) {
+      return bcryptjs.compare(password, this.password_hash);
+    }
 
   static associate(models) {
     this.hasMany(
       models.Contato,
       { foreignKey: 'user_id' },
     );
+    Contato.belongsTo(User,{
+      foreignKey: 'user_id'
+    })
+
     this.hasMany(models.Anotacoes, { foreignKey: 'use_id' });
+    Anotacoes.belongsTo(User,{
+      foreignKey: 'use_id'
+    })
+
     this.hasMany(models.Galeria, { foreignKey: 'userr_id' });
+    Galeria.belongsTo(User, {
+      foreignKey: 'userr_id'
+    })
   }
 }
